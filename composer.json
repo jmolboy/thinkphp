@@ -3,7 +3,6 @@
       "vendor-dir": "ThinkPHP/Library/Vendor"
     },
     "require": {
-        "php": ">=5.3.0",
-        "monolog/monolog": "^1.21"
+        "php": ">=5.3.0"
     }
 }
