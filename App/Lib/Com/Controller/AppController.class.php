@@ -17,7 +17,8 @@ class AppController extends Controller {
     protected $ajaxdata=array('status'=>'success','msg'=>"");
 
     public function _initialize(){
-        /** 根据语言类型设置view不同主题
+        /**
+         * 根据语言类型设置view不同主题
          *  LANG_SET是AppCheckLangBehavior定义的常量
          */
         if(defined('LANG_SET')){
@@ -30,14 +31,20 @@ class AppController extends Controller {
 		    $this->assignData('lang',LANG_SET);
 	    }
 
-//        //处理数据
-//        foreach($_GET as $key => $value){
-//            $_GET[$key]=db_escape_string($value);
-//        }
-//        foreach($_POST as $key => $value){
-//            $_POST[$key]=db_escape_string($value);
-//        }
-
+        // add whops
+        if(APP_DEBUG&&C('ADD_WHOOPS')){
+            $whops=new \Whoops\Run();
+            $isajax=IS_AJAX;
+            if($isajax){
+                $jsonHandler = new \Whoops\Handler\JsonResponseHandler();
+                $jsonHandler->setJsonApi(true);
+                $whops->pushHandler($jsonHandler);
+            }
+            else{
+                $whops->pushHandler(new \Whoops\Handler\PrettyPageHandler());
+            }
+            $whops->register();
+        }
     }
 
     /**
@@ -50,10 +57,6 @@ class AppController extends Controller {
         }
     }
 
-    protected function assign($name,$arr){
-//        if(is_string($arr))$arr=htmlspecialchars($arr);
-        parent::assign($name,$arr);
-    }
 
     /**
      * 根据语言类型显示语言模板

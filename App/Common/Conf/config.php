@@ -29,11 +29,9 @@ return array(
 		'__PAGEJS__' => '/pagejsmin', // 增加新的PAGEJS类库路径替换规则
 		'__UPLOAD__' => '/uploads', // 增加新的上传路径替换规则
 		'__PIC__'    => '/pic', // 增加新的图片路径替换规则
-		'__CSSH5__'  => '/h5/css',
-		'__PICH5__'  => '/h5/pic',
-		'__JSH5__'   => '/h5/jsmin',
 	),
-	'AUTOLOAD_NAMESPACE' => array(
+	'AUTOLOAD_NAMESPACE'   => array(
 		'Lib' => APP_PATH . 'Lib',
-	)
+	),
+	'ADD_WHOOPS'           => false
 );
