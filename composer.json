@@ -3,6 +3,10 @@
       "vendor-dir": "ThinkPHP/Library/Vendor"
     },
     "require": {
-        "php": ">=5.3.0"
+        "php": ">=5.3.0",
+        "filp/whoops": "^2.1"
+    },
+    "autoload": {
+        "psr-4": {"Acme\\": "src/"}
     }
 }
